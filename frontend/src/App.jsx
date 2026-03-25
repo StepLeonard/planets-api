@@ -1,5 +1,4 @@
-// we are getting tools from React
-// useState = holds our data (like a box)
+// useState = holds our data 
 // useEffect = runs code when the page opens
 import { useEffect, useState } from "react";
 

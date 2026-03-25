@@ -2,7 +2,10 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: black;
+  background-image: url("./assets/space.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
 }
 
@@ -19,6 +22,10 @@ h1 {
   letter-spacing: 2px;
   color: #fce84f;
   text-shadow: 0 0 10px #fce84f;
+  background-color: black;
+  padding: 15px;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 /* planet cards */
