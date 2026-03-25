@@ -1,0 +1,40 @@
+/* reset + background */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+}
+
+/* center everything */
+#root {
+  text-align: center;
+  padding: 40px;
+}
+
+/* title */
+h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  color: #fce84f;
+  text-shadow: 0 0 10px #fce84f;
+}
+
+/* planet cards */
+p {
+  background: #111;
+  border: 1px solid #444;
+  padding: 15px;
+  margin: 10px auto;
+  width: 300px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* hover effect */
+p:hover {
+  background: #1f1f1f;
+  transform: scale(1.05);
+  border-color: #888;
+}

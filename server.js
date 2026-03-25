@@ -12,58 +12,66 @@ app.use(express.json());
 
 const port = 3000;
 
-// start the server on port 3000
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
 
 // -------------------------
 // HELPER FUNCTION
 // -------------------------
 
-// create a function that adds a planet to the database
+// this function is used to add a planet into the database
 async function addPlanet(name, order, rings) {
-  // run a SQL query
+
+  // we are running a SQL command
   await db.query(
-    // SQL command to insert a new row into the planets table
+
+    // this says: put a new planet into the planets table
     "INSERT INTO planets (name, order_from_sun, has_rings) VALUES ($1, $2, $3)",
 
-    // replace $1, $2, $3 with these values
+    // these are the values we are putting into the table
+    // $1 = name, $2 = order, $3 = rings
     [name, order, rings],
   );
 }
+
 
 // -------------------------
 // POST ENDPOINT
 // -------------------------
 
-// create a POST route at /add-planet
+// this runs when we send data to /add-planet
 app.post("/add-planet", async (req, res) => {
-  // get the planet name from the request body
+
+  // we take the planet name from what was sent
   const name = req.body.name;
 
-  // get the order from the request body
+  // we take the order number from what was sent
   const order = req.body.order_from_sun;
 
-  // get whether the planet has rings
+  // we take if it has rings (true or false)
   const rings = req.body.has_rings;
 
-  // call the helper function to add the planet to the database
+  // now we send that data to the helper function
+  // this will save it in the database
   await addPlanet(name, order, rings);
 
-  // send a response back to confirm it worked
+  // we send back a message to say it worked
   res.send("Planet added!");
 });
+
 
 // -------------------------
 // GET ENDPOINT
 // -------------------------
 
-// create a GET route at /get-all-planets
+// this runs when we go to /get-all-planets
 app.get("/get-all-planets", async (req, res) => {
-  // run SQL to get all planets from the database
+
+  // we ask the database: "give me all the planets"
   const result = await db.query("SELECT * FROM planets");
 
-  // send the data back as JSON
+  // we send the planets back so we can see them
   res.json(result.rows);
 });
